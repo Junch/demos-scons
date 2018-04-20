@@ -1,0 +1,13 @@
+env=Environment()
+
+# env.Append(
+#     LIBPATH=[ '.' ],
+#     LIBS=[ 'add' ]
+# )
+
+env.Replace(CC='clang',
+            CCFLAGS="-g -O2",
+            PROGSUFFIX='.elf')
+
+env.SharedLibrary('add',[ 'sharedlibrary.c' ])
+env.Program('prog', ['program.c'], LIBS=['add'], LIBPATH='.')

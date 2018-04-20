@@ -1,5 +1,5 @@
-env=Environment()
+env=Environment(CC='clang')
 env['PROGSUFFIX']='.elf'
-env.Replace(CCFLAGS="-O2")
+env.Replace(CCFLAGS="-g -O2")
 env.SharedLibrary('foo',[ 'sharedlibrary.c' ])
 env.Program('foo',[ 'program.c' ])

@@ -9,6 +9,8 @@
 *.o
 *.so
 *.exe
+*.dylib
+*.dSYM
 *.elf
 *.dis
 *.s
