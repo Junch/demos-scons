@@ -5,9 +5,13 @@ env=Environment()
 #     LIBS=[ 'add' ]
 # )
 
+#https://stackoverflow.com/questions/50341906/scons-to-use-clang-mj-option
+#https://github.com/Sarcasm/notes/blob/master/dev/compilation-database.rst#build-systems-and-compilers
+
 env.Replace(CC='clang',
-            CCFLAGS="-g -O2",
             PROGSUFFIX='.elf')
+
+env.Append(CCFLAGS=['-MJ','${TARGET}.json'])
 
 env.SharedLibrary('add',[ 'sharedlibrary.c' ])
 env.Program('prog', ['program.c'], LIBS=['add'], LIBPATH='.')

@@ -1,2 +1,7 @@
-env=Environment(PROGSUFFIX='.elf')
-env.Program('main.c')
+env = Environment(CXX = 'clang++',
+                  CXXFLAGS = '-std=c++11 -stdlib=libc++',
+                  LINKFLAGS = '-stdlib=libc++')
+
+env.Append(CCFLAGS=['-MJ','${TARGET}.json','-m64','-g','-O3'])
+
+env.Program('main.cpp')
